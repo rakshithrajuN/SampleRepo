@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.2">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="S17_Videoads_UserParameters" enabled="true">
+        <collectionProp name="UserParameters.names">
+          <stringProp name="1314147170">P_Hostname</stringProp>
+          <stringProp name="0"></stringProp>
+        </collectionProp>
+        <collectionProp name="UserParameters.thread_values">
+          <collectionProp name="-838693763">
+            <stringProp name="1213730439">apim-zee5-qa-ci1-csvc-0001.azure-api.net</stringProp>
+            <stringProp name="0"></stringProp>
+          </collectionProp>
+        </collectionProp>
+        <boolProp name="UserParameters.per_iteration">false</boolProp>
+      </UserParameters>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="S17_Videoads" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <stringProp name="LoopController.loops">4</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.delayedStart">false</boolProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="S17_Videoads_T01_VideoAds" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">S17_Videoads.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">P_Userid,P_UserType,P_platformCode,P_platformName,P_age,P_ageGroup,P_gender,P_country,P_state,P_translation,P_userLanguage,P_appVersion,P_brand,P_model,P_ppid,P_convivaCdn,P_deviceId,P_dekey,P_collectionId,P_displayLanguage,P_id,P_title,P_channels,P_orderId,P_duration,P_businessType,P_assetType,P_assetSubtype,P_contentOwner,P_ageRating,P_audioLanguages,P_genres</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="S17_Videoads_T01_VideoAds" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S17_Videoads_T01_VideoAds" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;miscMetadata&quot;: {&#xd;
+		&quot;userId&quot;: &quot;${P_Userid}&quot;,&#xd;
+		&quot;userType&quot;: &quot;${P_UserType}&quot;,&#xd;
+		&quot;platformCode&quot;: &quot;${P_platformCode}&quot;,&#xd;
+		&quot;platformName&quot;: &quot;${P_platformName}&quot;,&#xd;
+		&quot;age&quot;: &quot;${P_age}&quot;,&#xd;
+		&quot;ageGroup&quot;: &quot;${P_ageGroup}&quot;,&#xd;
+		&quot;gender&quot;: &quot;${P_gender}&quot;,&#xd;
+		&quot;country&quot;: &quot;${P_country}&quot;,&#xd;
+		&quot;state&quot;: &quot;${P_state}&quot;,&#xd;
+		&quot;translation&quot;: &quot;${P_translation}&quot;,&#xd;
+		&quot;userLanguage&quot;: &quot;${P_userLanguage}&quot;,&#xd;
+		&quot;appVersion&quot;: &quot;&quot;,&#xd;
+		&quot;brand&quot;: &quot;&quot;,&#xd;
+		&quot;model&quot;: &quot;&quot;,&#xd;
+		&quot;ppid&quot;: &quot;&quot;,&#xd;
+		&quot;checkParentalControl&quot;: &quot;false&quot;,&#xd;
+		&quot;convivaCdn&quot;: &quot;&quot;,&#xd;
+		&quot;html5&quot;: 0,&#xd;
+		&quot;deviceId&quot;: &quot;${P_deviceId}&quot;,&#xd;
+		&quot;bdSource&quot;: &quot;&quot;,&#xd;
+		&quot;utmSource&quot;: &quot;&quot;,&#xd;
+		&quot;utmMedium&quot;: &quot;&quot;,&#xd;
+		&quot;utmCampaign&quot;: &quot;&quot;,&#xd;
+		&quot;utmContent&quot;: &quot;&quot;,&#xd;
+		&quot;utmTerm&quot;: &quot;&quot;,&#xd;
+		&quot;utmPageUrlLatest&quot;: &quot;&quot;,&#xd;
+		&quot;dekey&quot;: &quot;&quot;,&#xd;
+		&quot;isLatest&quot;: &quot;0&quot;,&#xd;
+		&quot;collectionId&quot;: &quot;&quot;,&#xd;
+		&quot;displayLanguage&quot;: &quot;${P_displayLanguage}&quot;,&#xd;
+		&quot;zgdpr&quot;: &quot;&quot;,&#xd;
+		&quot;zcnstdt&quot;: &quot;&quot;&#xd;
+	},&#xd;
+	&quot;contentMetadata&quot;: {&#xd;
+		&quot;id&quot;: &quot;${P_id}&quot;,&#xd;
+		&quot;title&quot;: &quot;${P_title}&quot;,&#xd;
+		&quot;channels&quot;: [],&#xd;
+		&quot;orderId&quot;: &quot;${P_orderId}&quot;,&#xd;
+		&quot;duration&quot;: 7652,&#xd;
+		&quot;businessType&quot;: &quot;${P_businessType}&quot;,&#xd;
+		&quot;assetType&quot;: &quot;0&quot;,&#xd;
+		&quot;assetSubtype&quot;: &quot;${P_assetSubtype}&quot;,&#xd;
+		&quot;contentOwner&quot;: &quot;${P_contentOwner}&quot;,&#xd;
+		&quot;ageRating&quot;: &quot;${P_ageRating}&quot;,&#xd;
+		&quot;audioLanguages&quot;: [&quot;${P_audioLanguages}&quot;],&#xd;
+		&quot;genres&quot;: [&quot;Drama&quot;,&#xd;
+             &quot;Action&quot;&#xd;
+		],&#xd;
+		&quot;isDrm&quot;: 1,&#xd;
+		&quot;descriptionUrl&quot;: &quot;https://www.zee5.com/movies/details/null//latest&quot;,&#xd;
+		&quot;adMarkers&quot;: [],&#xd;
+        &quot;season&quot;:&quot;&quot;,&#xd;
+        &quot;seasonDetails&quot;:{},&#xd;
+        &quot;streamUrlHls&quot;:&quot;&quot;,&#xd;
+        &quot;streamUrlHlsConnected&quot;:&quot;&quot;,&#xd;
+		&quot;tags&quot;: [&#xd;
+            &quot;RCS-MOVIES&quot;,&#xd;
+            &quot;rcs_station::STATION 72 MASTER&quot;,&#xd;
+            &quot;Sweet Heart&quot;,&#xd;
+            &quot;google watch&quot;&#xd;
+        ],&#xd;
+		&quot;hls&quot;: &quot;&quot;,&#xd;
+		&quot;video&quot;: &quot;&quot;,&#xd;
+        &quot;tvshowDetails&quot;:{&#xd;
+			&quot;id&quot;: &quot;&quot;,&#xd;
+			&quot;title&quot;: &quot;&quot;,&#xd;
+			&quot;channels&quot;: [],&#xd;
+			&quot;originalTitle&quot;: &quot;&quot;&#xd;
+		}&#xd;
+	}&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${P_Hostname}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">Adtech/videoAds</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <boolProp name="HTTPSampler.image_parser">false</boolProp>
+            <boolProp name="HTTPSampler.concurrentDwn">false</boolProp>
+            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+            <boolProp name="HTTPSampler.md5">false</boolProp>
+            <intProp name="HTTPSampler.ipSourceType">0</intProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">referer</stringProp>
+                  <stringProp name="Header.value">https://www.zee5.com/</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">user-agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">48</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

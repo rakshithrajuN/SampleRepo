@@ -1,0 +1,2 @@
+P_Userid,P_UserType,P_platformCode,P_platformName,P_age,P_ageGroup,P_gender,P_country,P_state,P_translation,P_userLanguage,P_deviceId,P_displayLanguage,P_id,P_title,P_orderId,P_duration,P_businessType,P_assetType,P_assetSubtype,P_contentOwner,P_ageRating,P_audioLanguages,P_genres
+e7eb99109ee111ecbf6f35af45941215,premium,mobile@application,mobile_web,21,18-24,Male,IN,Ka,en,en,WebBrowser,en,0-0-1z578365,MTest_AVOD_2,0,7652,advertisement_downloadable,0,movie,Zee Entertainment Enterprises Limited,U/A,hi,Drama
